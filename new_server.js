@@ -22,6 +22,7 @@ io.on("connection", (socket) => {
         console.log("Joined room: ", roomName)
         socket.join(roomName)
     })
+    
     // console.log("Current room", socket.rooms)
 })
 console.log("Hello")
