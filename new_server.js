@@ -6,14 +6,14 @@ const io = require("socket.io")(3000, {
 })
 io.on("connection", (socket) => {
     console.log('A user is connected')
-    socket.on("message", (message, roomName) => {
+    socket.on("message", (message, roomName, userId) => {
         if(roomName.length){
-            io.to(roomName).emit("message" ,message, roomName)
+            io.to(roomName).emit("message" ,message, roomName, userId)
         }else{
-            io.emit("message", message)
+            io.emit("message", message, undefined, userId)
         }
         
-        console.log(message, roomName);
+        console.log(message, undefined , roomName);
     })
     socket.on("disconnect", () => {
         console.log("User disconnected")
